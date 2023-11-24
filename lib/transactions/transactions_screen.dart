@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:safepay/my_diary/latest_transactions.dart';
+import 'package:safepay/ui_view/title_view.dart';
 
 import '../fitness_app_theme.dart';
 
@@ -70,11 +71,185 @@ class _TransactionsScreenState extends State<TransactionsScreen>
   void addAllListData() {
     const int count = 9;
 
+    listViews.add(Container(
+      width: double.infinity,
+      padding: const EdgeInsets.only(
+        left: 24.0,
+        right: 24.0,
+        bottom: 16.0,
+        top: 8.0,
+      ),
+      child: SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: <Widget>[
+            Container(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 30.0,
+                vertical: 10.0,
+              ),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(50.0),
+                color: FitnessAppTheme.nearlyDarkBlue,
+              ),
+              child: const Center(
+                child: Text(
+                  'Tout',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontFamily: FitnessAppTheme.fontName,
+                    fontWeight: FontWeight.normal,
+                    letterSpacing: 0.5,
+                  ),
+                ),
+              ),
+            ),
+            const SizedBox(
+              width: 8.0,
+            ),
+            Container(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 30.0,
+                vertical: 10.0,
+              ),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(50.0),
+                color: Colors.grey[200],
+              ),
+              child: const Center(
+                child: Text(
+                  'En attente de paiement',
+                  style: TextStyle(
+                    fontFamily: FitnessAppTheme.fontName,
+                    fontWeight: FontWeight.normal,
+                    letterSpacing: 0.5,
+                  ),
+                ),
+              ),
+            ),
+            const SizedBox(
+              width: 8.0,
+            ),
+            Container(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 20.0,
+                vertical: 10.0,
+              ),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(50.0),
+                color: Colors.grey[200],
+              ),
+              child: const Center(
+                child: Text(
+                  'En attente de paiement',
+                  style: TextStyle(
+                    fontFamily: FitnessAppTheme.fontName,
+                    fontWeight: FontWeight.normal,
+                    letterSpacing: 0.5,
+                  ),
+                ),
+              ),
+            ),
+            const SizedBox(
+              width: 8.0,
+            ),
+            Container(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 20.0,
+                vertical: 10.0,
+              ),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(50.0),
+                color: Colors.grey[200],
+              ),
+              child: const Center(
+                child: Text(
+                  'En attente de paiement',
+                  style: TextStyle(
+                    fontFamily: FitnessAppTheme.fontName,
+                    fontWeight: FontWeight.normal,
+                    letterSpacing: 0.5,
+                  ),
+                ),
+              ),
+            ),
+            const SizedBox(
+              width: 8.0,
+            ),
+            Container(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 20.0,
+                vertical: 10.0,
+              ),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(50.0),
+                color: Colors.grey[200],
+              ),
+              child: const Center(
+                child: Text(
+                  'En attente de paiement',
+                  style: TextStyle(
+                    fontFamily: FitnessAppTheme.fontName,
+                    fontWeight: FontWeight.normal,
+                    letterSpacing: 0.5,
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    ));
+
+    listViews.add(
+      TitleView(
+        titleTxt: 'Ajourd\'hui',
+        animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
+            parent: widget.animationController,
+            curve: const Interval((1 / count) * 0, 1.0,
+                curve: Curves.fastOutSlowIn))),
+        animationController: widget.animationController,
+      ),
+    );
+
     listViews.add(
       LatestTransactions(
         animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
             parent: widget.animationController,
             curve: const Interval((1 / count) * 1, 1.0,
+                curve: Curves.fastOutSlowIn))),
+        animationController: widget.animationController,
+      ),
+    );
+
+    listViews.add(
+      TitleView(
+        titleTxt: 'Hier',
+        animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
+            parent: widget.animationController,
+            curve: const Interval((1 / count) * 0, 1.0,
+                curve: Curves.fastOutSlowIn))),
+        animationController: widget.animationController,
+      ),
+    );
+
+    listViews.add(
+      LatestTransactions(
+        animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
+            parent: widget.animationController,
+            curve: const Interval((1 / count) * 1, 1.0,
+                curve: Curves.fastOutSlowIn))),
+        animationController: widget.animationController,
+      ),
+    );
+
+    listViews.add(
+      TitleView(
+        titleTxt: 'Plus anciens',
+        animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
+            parent: widget.animationController,
+            curve: const Interval((1 / count) * 0, 1.0,
                 curve: Curves.fastOutSlowIn))),
         animationController: widget.animationController,
       ),
@@ -204,6 +379,14 @@ class _TransactionsScreenState extends State<TransactionsScreen>
                                     padding: EdgeInsets.only(right: 8),
                                     child: Icon(
                                       Icons.notifications_sharp,
+                                      color: FitnessAppTheme.grey,
+                                      size: 30,
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsets.only(right: 8),
+                                    child: Icon(
+                                      Icons.filter_alt_sharp,
                                       color: FitnessAppTheme.grey,
                                       size: 30,
                                     ),

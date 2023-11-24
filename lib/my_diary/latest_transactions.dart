@@ -200,7 +200,6 @@ class LatestTransactions extends StatelessWidget {
               iconColor: Colors.blue,
             ),
           ),
-          const SizedBox(height: 15),
         ],
       ),
     );
